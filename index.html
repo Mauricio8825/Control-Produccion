@@ -18,7 +18,9 @@
       --shadow: 0 16px 50px rgba(0,0,0,.55);
       --mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
     }
+
     *{box-sizing:border-box}
+
     body{
       margin:0;
       background:
@@ -28,6 +30,7 @@
       color:var(--text);
       font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
     }
+
     header{
       position:sticky; top:0; z-index:10;
       padding:18px 16px;
@@ -35,10 +38,16 @@
       background:linear-gradient(180deg, rgba(11,12,15,.98), rgba(11,12,15,.86));
       backdrop-filter: blur(10px);
     }
-    .wrap{max-width:1300px; margin:0 auto; padding:0 16px;}
-    .titleRow{display:flex; align-items:baseline; justify-content:space-between; gap:12px; flex-wrap:wrap}
+
+    .wrap{max-width:1400px; margin:0 auto; padding:0 16px;}
+
+    .titleRow{
+      display:flex; align-items:baseline; justify-content:space-between; gap:12px; flex-wrap:wrap
+    }
+
     h1{margin:0; font-size:18px; letter-spacing:.2px}
     .sub{color:var(--muted); font-size:12px}
+
     .pill{
       display:inline-flex; align-items:center; gap:8px;
       padding:6px 10px;
@@ -50,6 +59,7 @@
       font-family: var(--mono);
       user-select:none;
     }
+
     .dot{
       width:8px; height:8px; border-radius:99px;
       background: var(--accent);
@@ -57,7 +67,13 @@
     }
 
     main{padding:18px 0 28px}
-    .grid{display:grid; grid-template-columns: repeat(12, 1fr); gap:14px}
+
+    .grid{
+      display:grid;
+      grid-template-columns: repeat(12, 1fr);
+      gap:14px
+    }
+
     .card{
       background:linear-gradient(180deg, rgba(255,255,255,.07), rgba(255,255,255,.04));
       border:1px solid rgba(255,255,255,.14);
@@ -65,6 +81,7 @@
       box-shadow: var(--shadow);
       padding:14px;
     }
+
     .card h3{
       margin:0 0 10px;
       font-size:12px;
@@ -75,6 +92,7 @@
       position:relative;
       padding-left:12px;
     }
+
     .card h3:before{
       content:"";
       position:absolute;
@@ -87,24 +105,39 @@
       background: var(--accent);
       opacity:.95;
     }
+
     .span12{grid-column: span 12}
-    .span7{grid-column: span 7}
-    .span5{grid-column: span 5}
+    .span8{grid-column: span 8}
+    .span4{grid-column: span 4}
+
     @media (max-width: 980px){
-      .span7,.span5{grid-column: span 12}
+      .span8,.span4{grid-column: span 12}
     }
 
-    .controls{display:flex; gap:12px; flex-wrap:wrap; align-items:end;}
+    .controls{
+      display:flex;
+      gap:12px;
+      flex-wrap:wrap;
+      align-items:end;
+    }
+
     .field{
-      min-width: 230px;
-      display:flex; flex-direction:column; gap:6px;
+      min-width: 220px;
+      display:flex;
+      flex-direction:column;
+      gap:6px;
       padding:12px 12px;
       border-radius: 16px;
       border:1px solid rgba(255,255,255,.16);
       background: linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,.03));
       box-shadow: 0 12px 28px rgba(0,0,0,.35);
     }
-    .field label{font-size:12px; color:var(--muted); font-weight:900}
+
+    .field label{
+      font-size:12px;
+      color:var(--muted);
+      font-weight:900
+    }
 
     input[type="date"], input[type="text"], select{
       width:100%;
@@ -120,13 +153,17 @@
       border-color: rgba(193, 18, 31, .70);
       box-shadow: 0 0 0 3px rgba(193, 18, 31, .18);
     }
+
     input[type="date"]::-webkit-calendar-picker-indicator{
       filter: invert(1);
       opacity: .9;
       cursor: pointer;
     }
+
     select{
-      appearance:none; -webkit-appearance:none; -moz-appearance:none;
+      appearance:none;
+      -webkit-appearance:none;
+      -moz-appearance:none;
       background-image:
         linear-gradient(45deg, transparent 50%, rgba(255,255,255,.85) 50%),
         linear-gradient(135deg, rgba(255,255,255,.85) 50%, transparent 50%);
@@ -137,6 +174,7 @@
       background-repeat: no-repeat;
       padding-right: 34px;
     }
+
     option{background:#0b0c0f; color:#fff;}
 
     .status{
@@ -145,23 +183,72 @@
       border:1px dashed rgba(255,255,255,.18);
       background: rgba(255,255,255,.03);
     }
+
     .status b{font-weight:1000}
     .mono{font-family:var(--mono)}
     .tiny{font-size:11px; color:rgba(255,255,255,.55); text-align:center}
 
-    .andonGrid{display:grid; grid-template-columns: repeat(4, 1fr); gap:12px}
-    @media (max-width: 1000px){ .andonGrid{grid-template-columns: repeat(2, 1fr)} }
+    .filterNote{
+      margin-top:8px;
+      font-size:12px;
+      color:rgba(255,255,255,.6);
+    }
+
+    .actionRow{
+      display:flex;
+      gap:10px;
+      align-items:center;
+      flex-wrap:wrap;
+      margin-top:10px;
+    }
+
+    .ghostBtn{
+      border:1px solid rgba(255,255,255,.16);
+      background: rgba(255,255,255,.04);
+      color:#fff;
+      border-radius:12px;
+      padding:10px 14px;
+      cursor:pointer;
+      font-weight:800;
+    }
+
+    .ghostBtn:hover{
+      border-color: rgba(193,18,31,.45);
+      background: rgba(193,18,31,.10);
+    }
+
+    .andonGrid{
+      display:grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap:12px
+    }
+
+    @media (max-width: 1100px){ .andonGrid{grid-template-columns: repeat(2, 1fr)} }
     @media (max-width: 560px){ .andonGrid{grid-template-columns: 1fr} }
+
     .tile{
+      position:relative;
       padding:14px;
       border-radius: 18px;
       border:1px solid rgba(255,255,255,.14);
       background: linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,.03));
     }
-    .tile .a{
-      display:flex; align-items:center; justify-content:space-between; gap:10px;
-      font-size:13px; color: rgba(255,255,255,.72); font-weight:1000
+
+    .tile:hover{
+      border-color: rgba(193, 18, 31, .45);
+      box-shadow: 0 16px 50px rgba(0,0,0,.55), 0 0 0 1px rgba(193, 18, 31, .10) inset;
     }
+
+    .tile .a{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:10px;
+      font-size:13px;
+      color: rgba(255,255,255,.72);
+      font-weight:1000
+    }
+
     .tile .a .tag{
       font-size:11px;
       padding:2px 8px;
@@ -174,26 +261,41 @@
       text-overflow: ellipsis;
       white-space: nowrap;
     }
-    .tile .n{font-size:36px; font-weight:1100; margin-top:6px; letter-spacing:.3px; text-align:center}
-    .tile .b{font-size:12px; color: rgba(255,255,255,.62); margin-top:6px; text-align:center}
 
-    .tile{ position:relative; }
-    .tile:hover{
-      border-color: rgba(193, 18, 31, .45);
-      box-shadow: 0 16px 50px rgba(0,0,0,.55), 0 0 0 1px rgba(193, 18, 31, .10) inset;
+    .tile .n{
+      font-size:36px;
+      font-weight:1100;
+      margin-top:6px;
+      letter-spacing:.3px;
+      text-align:center
     }
 
+    .tile .b{
+      font-size:12px;
+      color: rgba(255,255,255,.62);
+      margin-top:6px;
+      text-align:center;
+      line-height:1.45;
+    }
+
+    .tableWrap{
+      width:100%;
+      overflow:auto;
+      border-radius:16px;
+      border:1px solid rgba(255,255,255,.12);
+    }
 
     table{
       width:100%;
+      min-width:1050px;
       border-collapse: separate;
       border-spacing: 0;
-      overflow:hidden;
-      border-radius: 16px;
-      border:1px solid rgba(255,255,255,.12);
     }
+
     thead th{
-      position:sticky; top:0; z-index:2;
+      position:sticky;
+      top:0;
+      z-index:2;
       background: rgba(255,255,255,.06);
       backdrop-filter: blur(8px);
       text-align:left;
@@ -203,6 +305,7 @@
       border-bottom:1px solid rgba(255,255,255,.12);
       font-weight:1000;
     }
+
     tbody td{
       padding:10px;
       font-size:13px;
@@ -210,6 +313,7 @@
       color: rgba(255,255,255,.86);
       vertical-align:top;
     }
+
     tbody tr:hover td{background: rgba(255,255,255,.03)}
     td.num{text-align:right; font-family:var(--mono)}
   </style>
@@ -232,12 +336,19 @@
   <div class="wrap">
     <div class="grid">
 
-      <div class="card span7">
+      <div class="card span8">
         <h3>Filtros</h3>
         <div class="controls">
           <div class="field">
-            <label>Día</label>
+            <label>Día opcional</label>
             <input type="date" id="dDay" />
+          </div>
+
+          <div class="field" style="min-width:220px;">
+            <label>Planta</label>
+            <select id="fPlanta">
+              <option value="">Todas</option>
+            </select>
           </div>
 
           <div class="field" style="min-width:260px;">
@@ -249,12 +360,20 @@
 
           <div class="field" style="flex:1; min-width:320px;">
             <label>Buscar</label>
-            <input id="q" type="text" placeholder="Pedido, descripción, folio, medida, operador, atado..." />
+            <input id="q" type="text" placeholder="Planta, área, pedido, PN, descripción, medida..." />
           </div>
+        </div>
+
+        <div class="actionRow">
+          <button type="button" class="ghostBtn" id="btnClearDate">Quitar fecha</button>
+        </div>
+
+        <div class="filterNote">
+          Si no eliges fecha, el visor muestra todo el histórico ;)
         </div>
       </div>
 
-      <div class="card span5">
+      <div class="card span4">
         <h3>Estado</h3>
         <div class="status">
           <div><b id="statusText">Cargando datos…</b></div>
@@ -266,27 +385,30 @@
       </div>
 
       <div class="card span12">
-        <h3>Piezas por área</h3>
+        <h3>Piezas por planta / área</h3>
         <div class="andonGrid" id="andonGrid"></div>
       </div>
 
       <div class="card span12">
         <h3>Detalle</h3>
-        <table>
-          <thead>
-            <tr>
-              <th>Fecha/Hora</th>
-              <th>Área</th>
-              <th>Pedido</th>
-              <th>Folio</th>
-              <th>Descripción</th>
-              <th>Medida</th>
-              <th class="num">Cantidad</th>
-              <th>Atado</th>
-            </tr>
-          </thead>
-          <tbody id="tbody"></tbody>
-        </table>
+        <div class="tableWrap">
+          <table>
+            <thead>
+              <tr>
+                <th>Fecha/Hora</th>
+                <th>Planta</th>
+                <th>Área</th>
+                <th>Pedido</th>
+                <th>Partnumber</th>
+                <th>Descripción</th>
+                <th>Medida</th>
+                <th class="num">Cantidad</th>
+                <th>Atado</th>
+              </tr>
+            </thead>
+            <tbody id="tbody"></tbody>
+          </table>
+        </div>
       </div>
 
     </div>
@@ -294,29 +416,28 @@
 </main>
 
 <script>
-  // Config fija
   const SHEET_URL = "https://docs.google.com/spreadsheets/d/1zj1Faxj2qt_yDojIhhsGAag6t8TIBGqRrKimqCm_u9M/edit?gid=0#gid=0";
-  const GID = 0;
   const REFRESH_MS = 30000;
 
-  // Headers exactos
-  const H = {
-    ts: "Time Stamp",
-    areaSigla: "Area (Sigla)",
-    areaTexto: "Area completo (texto QR)",
-    operador: "Operador",
-    pedido: "Pedido",
-    descripcion: "Descripcion",
-    medida: "Medida",
-    partnumber: "Partnumber",
-    atadoActual: "Atado Actual",
-    qty: "Cantidad"
+  const HEADERS = {
+    ts: ["Time Stamp", "Timestamp"],
+    planta: ["Planta"],
+    areaSigla: ["Area (Sigla)", "Area"],
+    areaTexto: ["Area completo (texto QR)", "Area Completo"],
+    pedido: ["Pedido"],
+    descripcion: ["Descripcion"],
+    medida: ["Medida"],
+    partnumber: ["Partnumber", "P/N"],
+    atadoActual: ["Atado Actual", "Atado"],
+    qty: ["Cantidad"]
   };
 
-  // UI
   const dDay = document.getElementById("dDay");
+  const fPlanta = document.getElementById("fPlanta");
   const fArea = document.getElementById("fArea");
   const q = document.getElementById("q");
+  const btnClearDate = document.getElementById("btnClearDate");
+
   const statusText = document.getElementById("statusText");
   const statusHint = document.getElementById("statusHint");
   const lastUpdate = document.getElementById("lastUpdate");
@@ -328,21 +449,41 @@
   let raw = [];
   let filtered = [];
 
-  function setStatus(msg, hint=""){ statusText.textContent = msg; statusHint.textContent = hint; }
-  function normalize(s){ return String(s ?? "").trim().toLowerCase(); }
+  function setStatus(msg, hint=""){
+    statusText.textContent = msg;
+    statusHint.textContent = hint;
+  }
+
+  function normalize(s){
+    return String(s ?? "")
+      .normalize("NFD")
+      .replace(/[\u0300-\u036f]/g, "")
+      .trim()
+      .toLowerCase()
+      .replace(/\s+/g, " ");
+  }
+
   function escapeHtml(s){
     return String(s ?? "")
-      .replaceAll("&","&amp;")
-      .replaceAll("<","&lt;")
-      .replaceAll(">","&gt;")
-      .replaceAll('"',"&quot;")
-      .replaceAll("'","&#039;");
+      .replace(/&/g,"&amp;")
+      .replace(/</g,"&lt;")
+      .replace(/>/g,"&gt;")
+      .replace(/"/g,"&quot;")
+      .replace(/'/g,"&#039;");
   }
+
   function extractSheetId(url){
     const s = String(url || "").trim();
     const m = s.match(/\/spreadsheets\/d\/([a-zA-Z0-9-_]+)/);
     return m ? m[1] : "";
   }
+
+  function extractGid(url){
+    const s = String(url || "").trim();
+    const m = s.match(/[?&#]gid=(\d+)/);
+    return m ? m[1] : "0";
+  }
+
   function numFromAny(v){
     const s = String(v ?? "").trim();
     if (!s) return NaN;
@@ -350,10 +491,11 @@
     const n = Number(cleaned);
     return Number.isFinite(n) ? n : NaN;
   }
+
   function gvizDateToDate(v){
     if (v instanceof Date && !isNaN(v)) return v;
     const s = String(v ?? "").trim();
-    const m = s.match(/^Date\((\d{4}),(\d{1,2}),(\d{1,2})(?:,(\d{1,2}),(\d{1,2}),(\d{1,2}))?\)/);
+    const m = s.match(/^Date\((\d{4}),(\d{1,2}),(\d{1,2})(?:,(\d{1,2}),(\d{1,2}),(\d{1,2}))?\)$/);
     if (!m) {
       const d = new Date(s);
       return isNaN(d) ? null : d;
@@ -362,21 +504,34 @@
     const hh = +(m[4] ?? 0), mm = +(m[5] ?? 0), ss = +(m[6] ?? 0);
     return new Date(y, mo, da, hh, mm, ss);
   }
+
   function fmtDateTime(dt){
     if (!(dt instanceof Date) || isNaN(dt)) return "";
     return dt.toLocaleString();
   }
+
   function piezasDeCantidad(r){
     const n = numFromAny(r.qty);
     return Number.isFinite(n) ? n : 0;
   }
 
-  // JSONP
+  function findHeaderIndex(headers, aliases){
+    const norms = headers.map(normalize);
+    for (const alias of aliases) {
+      const idx = norms.indexOf(normalize(alias));
+      if (idx !== -1) return idx;
+    }
+    return -1;
+  }
+
   function gvizJsonp(url){
     return new Promise((resolve, reject) => {
       const cb = "cb_" + Math.random().toString(36).slice(2);
       const script = document.createElement("script");
-      const t = setTimeout(() => { cleanup(); reject(new Error("Timeout GViz")); }, 15000);
+      const t = setTimeout(() => {
+        cleanup();
+        reject(new Error("Timeout GViz"));
+      }, 15000);
 
       function cleanup(){
         clearTimeout(t);
@@ -384,87 +539,121 @@
         try { delete window[cb]; } catch(e){}
       }
 
-      window[cb] = (resp) => { cleanup(); resolve(resp); };
-      script.onerror = () => { cleanup(); reject(new Error("No se pudo cargar GViz")); };
+      window[cb] = (resp) => {
+        cleanup();
+        resolve(resp);
+      };
+
+      script.onerror = () => {
+        cleanup();
+        reject(new Error("No se pudo cargar GViz"));
+      };
 
       script.src = url + (url.includes("?") ? "&" : "?") + "tqx=responseHandler:" + cb;
       document.body.appendChild(script);
     });
   }
 
-  function rebuildAreaFilter(rows){
-    const areas = [...new Set(rows.map(r => r.areaSigla).filter(Boolean))]
+  function rebuildPlantaFilter(rows){
+    const plantas = [...new Set(rows.map(r => r.planta).filter(Boolean))]
       .sort((a,b)=>a.localeCompare(b,"es",{sensitivity:"base"}));
+
+    const cur = fPlanta.value;
+    fPlanta.innerHTML =
+      `<option value="">Todas</option>` +
+      plantas.map(p => `<option value="${escapeHtml(p)}">${escapeHtml(p)}</option>`).join("");
+
+    fPlanta.value = plantas.includes(cur) ? cur : "";
+  }
+
+  function rebuildAreaFilter(rows, plantaSel = ""){
+    const filteredRows = plantaSel ? rows.filter(r => r.planta === plantaSel) : rows;
+
+    const areas = [...new Set(filteredRows.map(r => r.areaSigla).filter(Boolean))]
+      .sort((a,b)=>a.localeCompare(b,"es",{sensitivity:"base"}));
+
     const cur = fArea.value;
-    fArea.innerHTML = `<option value="">Todas</option>` + areas.map(a => `<option value="${escapeHtml(a)}">${escapeHtml(a)}</option>`).join("");
+    fArea.innerHTML =
+      `<option value="">Todas</option>` +
+      areas.map(a => `<option value="${escapeHtml(a)}">${escapeHtml(a)}</option>`).join("");
+
     fArea.value = areas.includes(cur) ? cur : "";
   }
 
-  // Ventanas de tiempo (por día seleccionado)
   function windowsForArea(baseDate, areaSigla){
     const d0 = new Date(baseDate.getFullYear(), baseDate.getMonth(), baseDate.getDate(), 0,0,0);
     const d1 = new Date(d0.getTime() + 24*60*60*1000);
 
-    // General
     const mainStart = new Date(d0.getFullYear(), d0.getMonth(), d0.getDate(), 7, 0, 0);
     const mainEnd   = new Date(d0.getFullYear(), d0.getMonth(), d0.getDate(), 16, 45, 0);
     const otStart   = new Date(d0.getFullYear(), d0.getMonth(), d0.getDate(), 16, 45, 0);
     const otEnd     = new Date(d0.getFullYear(), d0.getMonth(), d0.getDate(), 18, 45, 0);
 
-    // Pintura especial
     const spStart   = new Date(d0.getFullYear(), d0.getMonth(), d0.getDate(), 19, 0, 0);
     const spEnd     = new Date(d1.getFullYear(), d1.getMonth(), d1.getDate(), 7, 0, 0);
 
     const isPintura = String(areaSigla || "").toLowerCase().includes("pint");
+
     const list = [
       { name:"Turno", start: mainStart, end: mainEnd },
       { name:"Extra", start: otStart, end: otEnd }
     ];
+
     if (isPintura){
       list.push({ name:"Especial", start: spStart, end: spEnd });
     }
+
     return { isPintura, list };
   }
 
   function inAnyWindow(dt, ws){
-    for (const w of ws) if (dt >= w.start && dt <= w.end) return w.name;
+    for (const w of ws) {
+      if (dt >= w.start && dt <= w.end) return w.name;
+    }
     return "";
   }
 
   function apply(){
-    if (!dDay.value){
-      setStatus("Selecciona un día.", "");
-      filtered = [];
-      render();
-      return;
-    }
-
-    const base = new Date(dDay.value + "T00:00:00");
-    if (isNaN(base)){
+    const base = dDay.value ? new Date(dDay.value + "T00:00:00") : null;
+    if (base && isNaN(base)){
       setStatus("Fecha inválida.", "");
       return;
     }
 
+    const plantaSel = fPlanta.value;
     const areaSel = fArea.value;
     const query = normalize(q.value);
 
     filtered = raw.filter(x => {
       if (!x.ts) return false;
 
-      if (areaSel){
-        if (x.areaSigla !== areaSel) return false;
-        const ws = windowsForArea(base, x.areaSigla).list;
-        if (!inAnyWindow(x.ts, ws)) return false;
-      } else {
-        // “Todas”: usa ventana general del día (turno + extra) para el detalle
-        const ws = windowsForArea(base, "X").list; // sin especial
-        if (!inAnyWindow(x.ts, ws)) return false;
+      if (plantaSel && x.planta !== plantaSel) return false;
+      if (areaSel && x.areaSigla !== areaSel) return false;
+
+      if (base){
+        if (areaSel){
+          const ws = windowsForArea(base, x.areaSigla).list;
+          if (!inAnyWindow(x.ts, ws)) return false;
+        } else {
+          const ws = windowsForArea(base, "X").list;
+          if (!inAnyWindow(x.ts, ws)) return false;
+        }
       }
 
       if (query){
-        const blob = `${x.pedido} ${x.partnumber} ${x.descripcion} ${x.medida} ${x.operador} ${x.atado}`.toLowerCase();
+        const blob = normalize([
+          x.planta,
+          x.areaSigla,
+          x.areaTexto,
+          x.pedido,
+          x.partnumber,
+          x.descripcion,
+          x.medida,
+          x.atado
+        ].join(" "));
         if (!blob.includes(query)) return false;
       }
+
       return true;
     });
 
@@ -475,80 +664,122 @@
     rawRows.textContent = String(raw.length);
     fRows.textContent = String(filtered.length);
 
-    if (!dDay.value){
-      andonGrid.innerHTML = "";
-      tbody.innerHTML = "";
-      return;
-    }
-
-    const base = new Date(dDay.value + "T00:00:00");
-
-    // Tablero por área (siempre aplica ventanas por área, incluyendo especial Pintura)
-    const byArea = new Map();
+    const base = dDay.value ? new Date(dDay.value + "T00:00:00") : null;
+    const byGroup = new Map();
 
     for (const x of raw){
       if (!x.ts) continue;
-      const area = x.areaSigla || "SIN ÁREA";
-      const cfg = windowsForArea(base, area);
-      const bucket = inAnyWindow(x.ts, cfg.list);
-      if (!bucket) continue;
 
-      let cur = byArea.get(area);
+      if (fPlanta.value && x.planta !== fPlanta.value) continue;
+      if (fArea.value && x.areaSigla !== fArea.value) continue;
+
+      const area = x.areaSigla || "SIN ÁREA";
+      const planta = x.planta || "SIN PLANTA";
+
+      let bucket = "";
+      let isPintura = false;
+
+      if (base){
+        const cfg = windowsForArea(base, area);
+        isPintura = cfg.isPintura;
+        bucket = inAnyWindow(x.ts, cfg.list);
+        if (!bucket) continue;
+      }
+
+      const key = planta + "||" + area;
+
+      let cur = byGroup.get(key);
       if (!cur){
-        cur = { area, areaTxt: x.areaTexto || "", total:0, turno:0, extra:0, especial:0, regs:0, last:null, isPintura: cfg.isPintura };
-        byArea.set(area, cur);
+        cur = {
+          planta,
+          area,
+          areaTxt: x.areaTexto || "",
+          total:0,
+          turno:0,
+          extra:0,
+          especial:0,
+          regs:0,
+          last:null,
+          isPintura
+        };
+        byGroup.set(key, cur);
       }
 
       cur.total += x.piezas;
       cur.regs += 1;
-      if (bucket === "Turno") cur.turno += x.piezas;
-      else if (bucket === "Extra") cur.extra += x.piezas;
-      else if (bucket === "Especial") cur.especial += x.piezas;
+
+      if (base){
+        if (bucket === "Turno") cur.turno += x.piezas;
+        else if (bucket === "Extra") cur.extra += x.piezas;
+        else if (bucket === "Especial") cur.especial += x.piezas;
+      }
 
       if (!cur.last || x.ts > cur.last) cur.last = x.ts;
     }
 
-    const tiles = [...byArea.values()].sort((a,b)=> (b.total-a.total) || a.area.localeCompare(b.area,"es"));
+    const tiles = [...byGroup.values()].sort((a,b)=> (b.total-a.total) || a.area.localeCompare(b.area,"es"));
 
-    andonGrid.innerHTML = tiles.map(t => {
-      const lastStr = t.last ? t.last.toLocaleString() : "-";
-      const breakdown = t.isPintura
-        ? `Turno: ${t.turno} · Extra: ${t.extra} · Especial: ${t.especial} · Regs: ${t.regs} · Último: ${lastStr}`
-        : `Turno: ${t.turno} · Extra: ${t.extra} · Regs: ${t.regs} · Último: ${lastStr}`;
-
-      return `
-        <div class="tile">
-          <div class="a">
-            <span>${escapeHtml(t.area)}</span>
-            <span class="tag" title="${escapeHtml(t.areaTxt)}">${escapeHtml(t.areaTxt || "—")}</span>
-          </div>
-          <div class="n">${escapeHtml(t.total)}</div>
-          <div class="b">${escapeHtml(breakdown)}</div>
+    if (!tiles.length){
+      andonGrid.innerHTML = `
+        <div class="tile" style="grid-column:1 / -1;">
+          <div class="b">No hay registros con los filtros actuales.</div>
         </div>
       `;
-    }).join("");
+    } else {
+      andonGrid.innerHTML = tiles.map(t => {
+        const lastStr = t.last ? t.last.toLocaleString() : "-";
 
-    // Tabla detalle (recientes primero)
+        const breakdown = base
+          ? (t.isPintura
+              ? `Turno: ${t.turno} · Extra: ${t.extra} · Especial: ${t.especial} · Regs: ${t.regs} · Último: ${lastStr}`
+              : `Turno: ${t.turno} · Extra: ${t.extra} · Regs: ${t.regs} · Último: ${lastStr}`)
+          : `Regs: ${t.regs} · Último: ${lastStr}`;
+
+        return `
+          <div class="tile">
+            <div class="a">
+              <span>${escapeHtml(t.area)}</span>
+              <span class="tag" title="${escapeHtml(t.planta)}">${escapeHtml(t.planta)}</span>
+            </div>
+            <div class="n">${escapeHtml(t.total)}</div>
+            <div class="b">
+              ${escapeHtml(t.areaTxt || "—")}<br>
+              ${escapeHtml(breakdown)}
+            </div>
+          </div>
+        `;
+      }).join("");
+    }
+
     const sorted = filtered.slice().sort((a,b)=> (b.ts - a.ts));
+
     tbody.innerHTML = sorted.map(x => `
       <tr>
         <td>${escapeHtml(fmtDateTime(x.ts))}</td>
-        <td>${escapeHtml(x.areaSigla)}</td>
-        <td>${escapeHtml(x.pedido)}</td>
-        <td>${escapeHtml(x.partnumber)}</td>
-        <td>${escapeHtml(x.descripcion)}</td>
-        <td>${escapeHtml(x.medida)}</td>
+        <td>${escapeHtml(x.planta || "—")}</td>
+        <td title="${escapeHtml(x.areaTexto || "")}">${escapeHtml(x.areaSigla || "—")}</td>
+        <td>${escapeHtml(x.pedido || "—")}</td>
+        <td>${escapeHtml(x.partnumber || "—")}</td>
+        <td>${escapeHtml(x.descripcion || "—")}</td>
+        <td>${escapeHtml(x.medida || "—")}</td>
         <td class="num">${escapeHtml(x.piezas)}</td>
-        <td>${escapeHtml(x.atado)}</td>
+        <td>${escapeHtml(x.atado || "—")}</td>
       </tr>
     `).join("");
 
-    setStatus("OK", "");
+    const hintParts = [];
+    hintParts.push(base ? `Día: ${dDay.value}` : "Histórico completo");
+    if (fPlanta.value) hintParts.push("Planta: " + fPlanta.value);
+    if (fArea.value) hintParts.push("Área: " + fArea.value);
+    if (q.value.trim()) hintParts.push("Búsqueda activa");
+
+    setStatus("OK", hintParts.join(" · "));
   }
 
   async function fetchSheet(){
     const id = extractSheetId(SHEET_URL);
-    const url = `https://docs.google.com/spreadsheets/d/${encodeURIComponent(id)}/gviz/tq?gid=${encodeURIComponent(GID)}&tq=${encodeURIComponent("select *")}`;
+    const gid = extractGid(SHEET_URL);
+    const url = `https://docs.google.com/spreadsheets/d/${encodeURIComponent(id)}/gviz/tq?gid=${encodeURIComponent(gid)}&tq=${encodeURIComponent("select *")}`;
 
     try{
       const resp = await gvizJsonp(url);
@@ -556,64 +787,73 @@
       if (!table || !table.cols || !table.rows) throw new Error("Respuesta GViz incompleta");
 
       const headers = table.cols.map(c => String(c.label || "").trim());
-      const hmap = new Map(headers.map((h,i)=>[h,i]));
 
-      const need = [H.ts, H.areaSigla, H.pedido, H.descripcion, H.partnumber, H.medida, H.qty];
-      const missing = need.filter(x => !hmap.has(x));
+      const idx = {};
+      for (const [key, aliases] of Object.entries(HEADERS)) {
+        idx[key] = findHeaderIndex(headers, aliases);
+      }
+
+      const need = ["ts", "areaSigla", "pedido", "descripcion", "qty"];
+      const missing = need.filter(k => idx[k] === -1);
+
       if (missing.length){
-        setStatus("Headers no coinciden.", "Faltan: " + missing.join(", "));
+        setStatus("Headers no coinciden.", "Faltan columnas requeridas: " + missing.join(", "));
         raw = [];
         apply();
         return;
       }
-
-      const idx = Object.fromEntries(Object.entries(H).map(([k,v]) => [k, hmap.has(v) ? hmap.get(v) : -1]));
 
       const rows = table.rows
         .map(r => (r.c || []).map(cell => cell ? (cell.v ?? "") : ""))
         .filter(r => r.some(v => String(v).trim() !== ""));
 
       raw = rows.map(r => {
-        const ts = gvizDateToDate(r[idx.ts]);
         const base = {
-          ts,
-          areaSigla: String(r[idx.areaSigla] ?? "").trim(),
+          ts: gvizDateToDate(r[idx.ts]),
+          planta: idx.planta === -1 ? "" : String(r[idx.planta] ?? "").trim(),
+          areaSigla: idx.areaSigla === -1 ? "" : String(r[idx.areaSigla] ?? "").trim(),
           areaTexto: idx.areaTexto === -1 ? "" : String(r[idx.areaTexto] ?? "").trim(),
-          operador: idx.operador === -1 ? "" : String(r[idx.operador] ?? "").trim(),
-          pedido: String(r[idx.pedido] ?? "").trim(),
-          descripcion: String(r[idx.descripcion] ?? "").trim(),
+          pedido: idx.pedido === -1 ? "" : String(r[idx.pedido] ?? "").trim(),
+          descripcion: idx.descripcion === -1 ? "" : String(r[idx.descripcion] ?? "").trim(),
           medida: idx.medida === -1 ? "" : String(r[idx.medida] ?? "").trim(),
           partnumber: idx.partnumber === -1 ? "" : String(r[idx.partnumber] ?? "").trim(),
           atado: idx.atadoActual === -1 ? "" : String(r[idx.atadoActual] ?? "").trim(),
-          qty: r[idx.qty]
+          qty: idx.qty === -1 ? "" : r[idx.qty]
         };
-        return { ...base, piezas: piezasDeCantidad(base) };
+
+        return {
+          ...base,
+          piezas: piezasDeCantidad(base)
+        };
       });
 
-      rebuildAreaFilter(raw);
-
-      if (!dDay.value){
-        const t = new Date();
-        const y = t.getFullYear();
-        const m = String(t.getMonth()+1).padStart(2,"0");
-        const d = String(t.getDate()).padStart(2,"0");
-        dDay.value = `${y}-${m}-${d}`;
-      }
+      rebuildPlantaFilter(raw);
+      rebuildAreaFilter(raw, fPlanta.value);
 
       lastUpdate.textContent = new Date().toLocaleString();
       apply();
+
     }catch(err){
       console.error(err);
-      setStatus("Error leyendo Sheet.", "");
+      setStatus("Error leyendo Sheet.", String(err?.message || err || ""));
     }
   }
 
-  // Eventos
   dDay.onchange = apply;
+
+  btnClearDate.onclick = () => {
+    dDay.value = "";
+    apply();
+  };
+
+  fPlanta.onchange = () => {
+    rebuildAreaFilter(raw, fPlanta.value);
+    apply();
+  };
+
   fArea.onchange = apply;
   q.oninput = apply;
 
-  // Inicio
   fetchSheet();
   setInterval(fetchSheet, REFRESH_MS);
 </script>
