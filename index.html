@@ -429,7 +429,8 @@
     medida: ["Medida"],
     partnumber: ["Partnumber", "P/N"],
     atadoActual: ["Atado Actual", "Atado"],
-    qty: ["Cantidad"]
+    qty: ["Cantidad"],
+    qtyReal: ["Cantidad Real"]
   };
 
   const dDay = document.getElementById("dDay");
@@ -508,6 +509,11 @@
   function fmtDateTime(dt){
     if (!(dt instanceof Date) || isNaN(dt)) return "";
     return dt.toLocaleString();
+  }
+
+  function preferCantidadReal(cantidad, cantidadReal){
+    const realTxt = String(cantidadReal ?? "").trim();
+    return realTxt !== "" ? cantidadReal : cantidad;
   }
 
   function piezasDeCantidad(r){
@@ -649,7 +655,8 @@
           x.partnumber,
           x.descripcion,
           x.medida,
-          x.atado
+          x.atado,
+          x.qty
         ].join(" "));
         if (!blob.includes(query)) return false;
       }
@@ -762,7 +769,7 @@
         <td>${escapeHtml(x.partnumber || "—")}</td>
         <td>${escapeHtml(x.descripcion || "—")}</td>
         <td>${escapeHtml(x.medida || "—")}</td>
-        <td class="num">${escapeHtml(x.piezas)}</td>
+        <td class="num">${escapeHtml(x.qty || "—")}</td>
         <td>${escapeHtml(x.atado || "—")}</td>
       </tr>
     `).join("");
@@ -808,6 +815,9 @@
         .filter(r => r.some(v => String(v).trim() !== ""));
 
       raw = rows.map(r => {
+        const qtyBase = idx.qty === -1 ? "" : r[idx.qty];
+        const qtyReal = idx.qtyReal === -1 ? "" : r[idx.qtyReal];
+
         const base = {
           ts: gvizDateToDate(r[idx.ts]),
           planta: idx.planta === -1 ? "" : String(r[idx.planta] ?? "").trim(),
@@ -818,7 +828,7 @@
           medida: idx.medida === -1 ? "" : String(r[idx.medida] ?? "").trim(),
           partnumber: idx.partnumber === -1 ? "" : String(r[idx.partnumber] ?? "").trim(),
           atado: idx.atadoActual === -1 ? "" : String(r[idx.atadoActual] ?? "").trim(),
-          qty: idx.qty === -1 ? "" : r[idx.qty]
+          qty: preferCantidadReal(qtyBase, qtyReal)
         };
 
         return {
