@@ -287,7 +287,7 @@
 
     table{
       width:100%;
-      min-width:1150px;
+      min-width:1050px;
       border-collapse: separate;
       border-spacing: 0;
     }
@@ -403,7 +403,6 @@
                 <th>Descripción</th>
                 <th>Medida</th>
                 <th class="num">Cantidad</th>
-                <th class="num">Cantidad Real</th>
                 <th>Atado</th>
               </tr>
             </thead>
@@ -430,8 +429,7 @@
     medida: ["Medida"],
     partnumber: ["Partnumber", "P/N"],
     atadoActual: ["Atado Actual", "Atado"],
-    qty: ["Cantidad"],
-    qtyReal: ["Cantidad Real"]
+    qty: ["Cantidad"]
   };
 
   const dDay = document.getElementById("dDay");
@@ -510,12 +508,6 @@
   function fmtDateTime(dt){
     if (!(dt instanceof Date) || isNaN(dt)) return "";
     return dt.toLocaleString();
-  }
-
-  function preferCantidadReal(cantidad, cantidadReal){
-    const realTxt = String(cantidadReal ?? "").trim();
-    if (realTxt !== "") return cantidadReal;
-    return cantidad;
   }
 
   function piezasDeCantidad(r){
@@ -770,8 +762,7 @@
         <td>${escapeHtml(x.partnumber || "—")}</td>
         <td>${escapeHtml(x.descripcion || "—")}</td>
         <td>${escapeHtml(x.medida || "—")}</td>
-        <td class="num">${escapeHtml(x.qtyBase || "—")}</td>
-        <td class="num">${escapeHtml(x.qtyReal || "—")}</td>
+        <td class="num">${escapeHtml(x.piezas)}</td>
         <td>${escapeHtml(x.atado || "—")}</td>
       </tr>
     `).join("");
@@ -817,9 +808,6 @@
         .filter(r => r.some(v => String(v).trim() !== ""));
 
       raw = rows.map(r => {
-        const qtyBase = idx.qty === -1 ? "" : r[idx.qty];
-        const qtyReal = idx.qtyReal === -1 ? "" : r[idx.qtyReal];
-
         const base = {
           ts: gvizDateToDate(r[idx.ts]),
           planta: idx.planta === -1 ? "" : String(r[idx.planta] ?? "").trim(),
@@ -830,9 +818,7 @@
           medida: idx.medida === -1 ? "" : String(r[idx.medida] ?? "").trim(),
           partnumber: idx.partnumber === -1 ? "" : String(r[idx.partnumber] ?? "").trim(),
           atado: idx.atadoActual === -1 ? "" : String(r[idx.atadoActual] ?? "").trim(),
-          qtyBase: qtyBase,
-          qtyReal: qtyReal,
-          qty: preferCantidadReal(qtyBase, qtyReal)
+          qty: idx.qty === -1 ? "" : r[idx.qty]
         };
 
         return {
